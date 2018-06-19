@@ -96,10 +96,10 @@ jobs:
       - gulp ng-pkg-pub-get # --skip=package_name|...
       - gulp _build-prep --clean
 
-    - env: CI_TASK="dartfmt-examples"
+    - env: CI_TASK="dartfmt"
       script: gulp $CI_TASK
 
-    - env: CI_TASK="analyze-examples"
+    - env: CI_TASK="analyze"
       script: gulp $CI_TASK
 
     # - env: CI_TASK="test $TEST_OPT"

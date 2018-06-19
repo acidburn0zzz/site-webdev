@@ -40,15 +40,14 @@ module.exports = function (gulp, plugins, config) {
     examplesFullPath.forEach(p => _exec(cmd, Object.assign(opt, { cwd: p })));
   }
 
-  gulp.task('analyze-examples', () => {
+  gulp.task('analyze', () => {
     examplesExec('pub get', {
       env:
         Object.assign(process.env, { PUB_ALLOW_PRERELEASE_SDK: 'quiet' }),
-        stdio: [0,1,1], // Direct stderr to stdio
     });
     examplesExec('dartanalyzer --preview-dart-2 --no-hints --fatal-warnings .');
   });
-  gulp.task('dartfmt-examples', () => examplesExec('dartfmt -w --set-exit-if-changed lib web test'));
+  gulp.task('dartfmt', () => examplesExec('dartfmt -w --set-exit-if-changed lib web test'));
 
   // ==========================================================================
   // Boilerplate management

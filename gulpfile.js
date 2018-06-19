@@ -418,7 +418,12 @@ function pexec(cmd, options) {
 function execSyncAndLog(cmd, optional_options) {
   const cwd = optional_options && optional_options.cwd ? ` # cwd: ${optional_options.cwd}` : '';
   gutil.log(`> ${cmd}${cwd}`);
-  const output = child_process.execSync(cmd, optional_options) + '';
+  let output;
+  try {
+    output = child_process.execSync(cmd, optional_options) + '';
+  } catch (e) {
+    output = `ExecSync error in ${cmd}\n${e.stdout}\n${e.stderr}\n`;
+  }
   gutil.log(output);
   return output;
 }
