@@ -43,7 +43,8 @@ module.exports = function (gulp, plugins, config) {
   gulp.task('analyze-examples', () => {
     examplesExec('pub get', {
       env:
-        Object.assign(process.env, { PUB_ALLOW_PRERELEASE_SDK: 'quiet' })
+        Object.assign(process.env, { PUB_ALLOW_PRERELEASE_SDK: 'quiet' }),
+        stdio: [0,1,1], // Direct stderr to stdio
     });
     examplesExec('dartanalyzer --preview-dart-2 --no-hints --fatal-warnings .');
   });
