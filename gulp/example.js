@@ -41,7 +41,10 @@ module.exports = function (gulp, plugins, config) {
     });
   }
 
-  gulp.task('analyze-examples', () => examplesExec('dartanalyzer --preview-dart-2 .'));
+  gulp.task('analyze-examples', () => {
+    examplesExec('pub get');
+    examplesExec('dartanalyzer --preview-dart-2 .');
+  });
   gulp.task('dartfmt-examples', () => examplesExec('dartfmt -w --set-exit-if-changed lib web test'));
 
   // ==========================================================================
