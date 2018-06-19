@@ -45,7 +45,7 @@ module.exports = function (gulp, plugins, config) {
       env:
         Object.assign(process.env, { PUB_ALLOW_PRERELEASE_SDK: 'quiet' })
     });
-    examplesExec('dartanalyzer --preview-dart-2 .');
+    examplesExec('dartanalyzer --preview-dart-2 --no-hints --fatal-warnings .');
   });
   gulp.task('dartfmt-examples', () => examplesExec('dartfmt -w --set-exit-if-changed lib web test'));
 
