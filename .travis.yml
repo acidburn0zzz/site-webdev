@@ -96,13 +96,11 @@ jobs:
       - gulp ng-pkg-pub-get # --skip=package_name|...
       - gulp _build-prep --clean
 
-    - env: CI_SUBTASK="dartfmt"
-      script: gulp examples-exec --filter=. --cmd="$CI_SUBTASK -w --set-exit-if-changed lib web test"
+    - env: CI_TASK="dartfmt-examples"
+      script: gulp $CI_TASK
 
-    - env: CI_SUBTASK="dartanalyzer"
-      script:
-        - type $CI_SUBTASK
-        - gulp examples-exec --filter=. --cmd="$CI_SUBTASK -h -v --preview-dart-2 ."
+    - env: CI_TASK="analyze-examples"
+      script: gulp $CI_TASK
 
     # - env: CI_TASK="test $TEST_OPT"
     # - env: CI_TASK="e2e $E2E_OPT1"
