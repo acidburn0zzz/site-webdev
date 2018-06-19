@@ -100,7 +100,8 @@ jobs:
       script: gulp $CI_TASK
 
     - env: CI_TASK="analyze"
-      script: gulp $CI_TASK
+      # Skip apps that have component tests
+      script: gulp $CI_TASK --skip=ng/doc/t
 
     # - env: CI_TASK="test $TEST_OPT"
     # - env: CI_TASK="e2e $E2E_OPT1"
